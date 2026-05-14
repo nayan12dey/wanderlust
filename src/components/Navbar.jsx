@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 
+
 const Navbar = () => {
     return (
         <nav className="flex justify-between bg-white p-5">
@@ -12,7 +13,7 @@ const Navbar = () => {
             </ul>
 
             <div>
-                <Image src={"/assets/wanderlast.png"} width={150} height={150} alt="logo"></Image>
+                <Image src={"/assets/Wanderlast.png"} width={150} height={150} alt="logo"></Image>
             </div>
 
             <ul className="flex gap-3">
