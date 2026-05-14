@@ -13,7 +13,7 @@ const Navbar = () => {
             </ul>
 
             <div>
-                <Image src={"/assets/Wanderlast.png"} width={150} height={150} alt="logo"></Image>
+                <Image src={"/assets/wanderlust.png"} width={150} height={150} alt="logo"></Image>
             </div>
 
             <ul className="flex gap-3">
