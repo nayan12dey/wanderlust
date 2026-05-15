@@ -6,7 +6,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "www.joxa.com"
+        hostname: "cdn.pixabay.com"
       }
     ]
   }
