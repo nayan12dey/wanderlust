@@ -1,3 +1,4 @@
+import { DeleteAlert } from "@/components/DeleteAlert";
 import { EditModal } from "@/components/EditModal";
 import { Button } from "@heroui/react";
 import Image from "next/image";
@@ -19,8 +20,9 @@ const DestinationDetailsPage = async ({ params }) => {
     return (
         <div className="max-w-7xl mx-auto my-6">
 
-            <div className="flex justify-end">
+            <div className="flex justify-end items-center gap-3">
                <EditModal destination={destination}></EditModal>
+               <DeleteAlert destination={destination}></DeleteAlert>
             </div>
 
 
