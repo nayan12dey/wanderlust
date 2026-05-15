@@ -1,4 +1,7 @@
+import { EditModal } from "@/components/EditModal";
+import { Button } from "@heroui/react";
 import Image from "next/image";
+import { BiEdit } from "react-icons/bi";
 import { FaRegCalendar } from "react-icons/fa";
 import { LuMapPin } from "react-icons/lu";
 
@@ -15,7 +18,13 @@ const DestinationDetailsPage = async ({ params }) => {
 
     return (
         <div className="max-w-7xl mx-auto my-6">
-            <Image src={imageUrl} height={500} width={800} alt={destinationName}></Image>
+
+            <div className="flex justify-end">
+               <EditModal destination={destination}></EditModal>
+            </div>
+
+
+            <Image src={imageUrl} height={500} width={800} alt={destinationName} className="w-full h-100 object-cover"></Image>
 
             <div className="p-2">
                 <div className="flex items-center">
