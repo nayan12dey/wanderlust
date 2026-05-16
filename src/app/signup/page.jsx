@@ -1,22 +1,24 @@
 
 "use client";
 import { authClient } from "@/lib/auth-client";
-import {Check} from "@gravity-ui/icons";
-import {Button, Card, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
+import { Check } from "@gravity-ui/icons";
+import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
 import { redirect } from "next/navigation";
+import { BsGoogle } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 
 
 const SignUpPage = () => {
 
-    const onSubmit = async(e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget)
         const user = Object.fromEntries(formData.entries())
-        
+
         console.log(user);
 
-        const {data, error} = await authClient.signUp.email({
+        const { data, error } = await authClient.signUp.email({
             email: user.email,
             password: user.password,
             name: user.name,
@@ -25,14 +27,20 @@ const SignUpPage = () => {
 
         // console.log({data, error})
 
-        if(data){
+        if (data) {
             redirect("/")
         }
-        if(error){
+        if (error) {
             // toast
             alert(error?.message);
         }
 
+    }
+
+    const handleGoogleSignIn = async() => {
+        await authClient.signIn.social({
+            provider: "google"
+        })
     }
 
 
@@ -107,9 +115,20 @@ const SignUpPage = () => {
                         <Button type="submit" className={"w-full bg-cyan-500"}>
                             Create Account
                         </Button>
-                       
+
                     </div>
                 </Form>
+                <div className="flex justify-center items-center gap-3">
+                   <Separator></Separator>
+                    <div className="whitespace-nowrap">
+                        Or sign up with
+                    </div>
+                   <Separator></Separator>
+                    
+                </div>
+                <div>
+                    <Button variant="outline" className={"w-full"} onClick={handleGoogleSignIn}> <FcGoogle></FcGoogle> Sign in with Google</Button>
+                </div>
             </Card>
         </div>
     );

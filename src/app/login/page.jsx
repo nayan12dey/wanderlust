@@ -2,8 +2,9 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
-import { Button, Card, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
 import { redirect } from "next/navigation";
+import { FcGoogle } from "react-icons/fc";
 
 const loginPage = () => {
 
@@ -20,7 +21,7 @@ const loginPage = () => {
             password: user.password,
         })
 
-        console.log({data, error})
+        console.log({ data, error })
 
         if (data) {
             redirect("/")
@@ -32,6 +33,13 @@ const loginPage = () => {
 
     }
 
+    const handleGoogleSignIn = async () => {
+        await authClient.signIn.social({
+            provider: "google"
+        })
+    }
+
+
     return (
         <div className="max-w-7xl mx-auto">
             <div className="text-center my-4">
@@ -40,7 +48,7 @@ const loginPage = () => {
             </div>
             <Card className="border p-10">
                 <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
-    
+
                     <TextField
                         isRequired
                         name="email"
@@ -86,6 +94,17 @@ const loginPage = () => {
 
                     </div>
                 </Form>
+                <div className="flex justify-center items-center gap-3">
+                    <Separator></Separator>
+                    <div className="whitespace-nowrap">
+                        Or sign up with
+                    </div>
+                    <Separator></Separator>
+
+                </div>
+                <div>
+                    <Button variant="outline" className={"w-full"} onClick={handleGoogleSignIn}> <FcGoogle></FcGoogle> Sign in with Google</Button>
+                </div>
             </Card>
         </div>
 
