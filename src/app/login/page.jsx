@@ -103,7 +103,7 @@ const loginPage = () => {
 
                 </div>
                 <div>
-                    <Button variant="outline" className={"w-full"} onClick={handleGoogleSignIn}> <FcGoogle></FcGoogle> Sign in with Google</Button>
+                    <Button variant="outline" className={"w-full"} onClick={handleGoogleSignIn}> <FcGoogle></FcGoogle> Login in with Google</Button>
                 </div>
             </Card>
         </div>
