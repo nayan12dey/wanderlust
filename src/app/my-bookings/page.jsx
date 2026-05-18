@@ -13,11 +13,20 @@ const MyBookingPage = async () => {
         headers: await headers() // you need to pass the headers object.
     })
 
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+
+
     const user = session?.user;
 
     console.log(user)
 
-    const res = await fetch(`http://localhost:5000/booking/${user?.id}`)
+    const res = await fetch(`http://localhost:5000/booking/${user?.id}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
 
     const bookings = await res.json()
     console.log(bookings)
@@ -46,7 +55,7 @@ const MyBookingPage = async () => {
                             <p className='text-3xl font-bold text-cyan-500'>${booking.price}</p>
                             <BookingCancelAlert bookingId={booking._id}></BookingCancelAlert>
 
-                            
+
                         </div>
 
                     </div>)
